@@ -5,7 +5,8 @@ package com.resource;
  * included with getter() and setters(). In Warehouse we are going to put Game
  * objects in Hashset so hashCode() and equals() method on title is overridden.
  * If title is same then game should be same.
- * 
+ *   
+ *   
  * @author swapnilu
  *
  */
