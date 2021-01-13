@@ -1,12 +1,10 @@
 package com.resource;
 
 /**
- * <h1>Game</h1> This class having properties title, description and price
- * included with getter() and setters(). In Warehouse we are going to put Game
- * objects in Hashset so hashCode() and equals() method on title is overridden.
- * If title is same then game should be same.
- *   
- *   
+ * Constructs new Game object having properties title, description and price.
+ * Objects are compared on title if title is same then object should be same.
+ * 
+ * 
  * @author swapnilu
  *
  */
@@ -20,7 +18,6 @@ public class Game {
 	}
 
 	public Game(String title) {
-		super();
 		this.title = title;
 	}
 

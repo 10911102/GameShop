@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * <h1>GameShop</h1> A Java Application for Game Shop and Warehouse Business
+ * <h1>DriverCode</h1> A Java Application for Game Shop and Warehouse Business
  * Communication This application will help Game Shop and Warehouse to make
  * business. This code is to test the application with different parameters
  * 

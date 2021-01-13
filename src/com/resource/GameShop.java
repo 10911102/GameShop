@@ -3,14 +3,12 @@ package com.resource;
 import java.time.LocalTime;
 
 /**
- * <h1>GameShop</h1> This class having properties openTime and closeTime
- * included with getter() and setters(). In Gameshop we are providing method to
- * buy a game from warehouse which take String as parameter and invokes the
- * checkStoke() and removeGame() from Warehouse.
+ * Construct Gameshop Object with city, openTime and closeTime.
  * 
  * @author swapnilu
  *
  */
+
 public class GameShop extends Warehouse {
 	private LocalTime openTime;
 	private LocalTime closeTime;
@@ -41,6 +39,15 @@ public class GameShop extends Warehouse {
 		this.closeTime = closeTime;
 	}
 
+	/**
+	 * Help to buy specific game from warehouse. Also checks for stock before
+	 * placing order and removes the specified game from warehouse stock. and also
+	 * take care of shop opening and closing time before checking the stock.
+	 * 
+	 * @param Takes the game name as String
+	 * @return Returns true if order successfully placed and false if not placed.
+	 *
+	 */
 	public boolean buyGame(String game) {
 		boolean flag = false;
 		if (this.openTime.getHour() < (LocalTime.now().getHour())
@@ -48,8 +55,8 @@ public class GameShop extends Warehouse {
 			if (Warehouse.checkStock(game) && Warehouse.removeGame(game)) {
 				System.out.println("Order placed");
 				flag = true;
-			}
-			System.out.println("Sorry,Try another game this game will be availabe soon");
+			} else
+				System.out.println("Sorry,Try another game this game will be availabe soon");
 		} else {
 			System.out.println("Shop is Closed, Visit again between" + this.openTime.getHour() + " and "
 					+ this.closeTime.getHour());

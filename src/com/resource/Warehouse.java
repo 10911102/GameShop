@@ -4,10 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * <h1>Warehouse</h1> This class having properties city and HashSet of Game
- * class objects included with getter() and setters(). In Warehouse we are
- * providing methods checkStoke() and removeGame() which take String as
- * parameter and manipulate the HashSet.
+ * Constructs the object of warehouse class having properties city and HashSet
+ * of Game class objects. In Warehouse we checking stock and removing Game.
  * 
  * @author swapnilu
  *
@@ -41,11 +39,28 @@ public class Warehouse {
 		Warehouse.gameSet = gameSet;
 	}
 
+	/**
+	 * check for game in <a href=
+	 * "https://docs.oracle.com/javase/7/docs/api/java/util/HashSet.html">hashset</a>
+	 * of games warehouse
+	 * 
+	 * @param Takes game name as String
+	 * @return Returns true if game in stock and false if not in stock.
+	 */
 	public static boolean checkStock(String game) {
 		Game g = new Game(game);
 		return gameSet.contains(g);
 	}
 
+	/**
+	 * removes the game from <a href=
+	 * "https://docs.oracle.com/javase/7/docs/api/java/util/HashSet.html">hashset
+	 * </a> of games in warehouse
+	 * 
+	 * @param Takes game name as String
+	 * @return Returns true if game is deleted from hashset and false if not
+	 *         deleted.
+	 */
 	public static boolean removeGame(String game) {
 		Game g = new Game(game);
 		return gameSet.remove(g);
