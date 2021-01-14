@@ -44,7 +44,7 @@ public class GameShop extends Warehouse {
 	 * placing order and removes the specified game from warehouse stock. and also
 	 * take care of shop opening and closing time before checking the stock.
 	 * 
-	 * @param Takes the game name as String
+	 * @param game Takes the game name as String
 	 * @return Returns true if order successfully placed and false if not placed.
 	 *
 	 */

@@ -10,6 +10,7 @@ package com.resource;
  */
 public class Game {
 	private String title;
+	private String type;
 	private String description;
 	private float price;
 
@@ -27,12 +28,27 @@ public class Game {
 		this.price = price;
 	}
 
+	public Game(String title, String type, String description, float price) {
+		this.title = title;
+		this.type = type;
+		this.description = description;
+		this.price = price;
+	}
+
 	public String getTitle() {
 		return title;
 	}
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public String getDescription() {
@@ -51,9 +67,11 @@ public class Game {
 		this.price = price;
 	}
 
+	
+
 	@Override
 	public String toString() {
-		return "Game [title=" + title + ", description=" + description + ", price=" + price + "]";
+		return "Game title=" + title + ", type=" + type + ", description=" + description + ", price=" + price + "";
 	}
 
 	@Override
