@@ -9,6 +9,7 @@ package com.resource;
  *
  */
 public class Game {
+
 	private String title;
 	private String type;
 	private String description;
@@ -66,8 +67,6 @@ public class Game {
 	public void setPrice(float price) {
 		this.price = price;
 	}
-
-	
 
 	@Override
 	public String toString() {

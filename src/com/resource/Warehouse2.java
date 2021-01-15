@@ -65,71 +65,87 @@ public class Warehouse2 {
 	}
 
 	/**
-	 * Display list of game filter on type using <a href=
+	 * Returns <a href=
 	 * "https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html">Arraylist</a>
-	 * available warehouse
+	 * of games according to filter on type available in warehouse
 	 * 
 	 * @param type takes game type as String
+	 * @return list <a href=
+	 *         "https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html">Arraylist</a>
+	 *         of Game
 	 * 
 	 */
 
-	public static void showGameByType(String type) {
-		int count = 1;
-		System.out.println("Game Title        Description                Price");
+	public static List<Game> showGameByFilter(String type) {
+		List<Game> list = new ArrayList<Game>();
+		System.out.println("Games having Type " + type);
 		for (Game game : gameList) {
 			if (game.getType().equals(type)) {
-				System.out.println(
-						count++ + "  " + game.getTitle() + "      " + game.getDescription() + "  " + game.getPrice());
+				list.add(game);
 			}
 		}
+		return list;
 
 	}
 
 	/**
-	 * Display list of game between min and max parameters using <a href=
+	 * Display list of game using <a href=
 	 * "https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html">Arraylist</a>
 	 * available warehouse
 	 * 
-	 * @param min takes float for minimum value
-	 * @param max takes float for maximum value
+	 * @param list takes ArrayList of Game
 	 */
-	public static void showGameByPrice(float min, float max) {
+	public static void show(List<Game> list) {
 		int count = 1;
-		System.out.println("Games having price between " + min + " and " + max);
 		System.out.println("Game Title        Description                Price");
+		for (Object game : list)
+			System.out.println(count++ + "  " + ((Game) game).getTitle() + "      " + ((Game) game).getDescription()
+					+ "  " + ((Game) game).getPrice());
+	}
+
+	/**
+	 * Returns <a href=
+	 * "https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html">Arraylist</a>
+	 * of games according to filter on min max price available in warehouse
+	 * 
+	 * @param min minimum value for filter
+	 * @param max maximum value for filter
+	 * @return list <a href=
+	 *         "https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html">Arraylist</a>
+	 *         of Game
+	 * 
+	 */
+	public static List<Game> showGameByFilter(float min, float max) {
+		List<Game> list = new ArrayList<Game>();
+		System.out.println("Games having price between " + min + " and " + max);
 		for (Game game : gameList) {
 			if (game.getPrice() > min && game.getPrice() < max) {
-				System.out.println(
-						count++ + "  " + game.getTitle() + "      " + game.getDescription() + "  " + game.getPrice());
+				list.add(game);
 			}
 		}
+		return list;
 
 	}
 
 	/**
-	 * Display list of game having same type and between min and max parameters
-	 * using <a href=
+	 * Returns <a href=
 	 * "https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html">Arraylist</a>
-	 * available warehouse
+	 * of games according to filter on type and min max price available in warehouse
 	 * 
 	 * @param type takes game type as String
 	 * @param min  takes float for minimum value
 	 * @param max  takes float for maximum value
+	 * @return list <a href=
+	 *         "https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html">Arraylist</a>
+	 *         of Game
+	 * 
 	 */
 
-	public static void showGameByTypeAndPrice(String type, float min, float max) {
-		int count = 1;
-		System.out.println("Games having Type " + type + " price between " + min + " and " + max);
-		System.out.println("Game Title        Description                Price");
-		for (Game game : gameList) {
-			if (game.getType().equals(type)) {
-				if (game.getPrice() > min && game.getPrice() < max) {
-					System.out.println(count++ + "  " + game.getTitle() + "      " + game.getDescription() + "  "
-							+ game.getPrice());
-				}
-			}
-		}
-
+	public static List<Game> showGameByFilter(String type, float min, float max) {
+		List<Game> list = new ArrayList<Game>();
+		list = showGameByFilter(type);
+		list.retainAll(showGameByFilter(min, max));
+		return list;
 	}
 
 }

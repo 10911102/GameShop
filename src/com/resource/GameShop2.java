@@ -45,6 +45,23 @@ public class GameShop2 extends Warehouse2 {
 	}
 
 	/**
+	 * Status of the shop that currently shop is open or not. if shop is not open
+	 * then shows the appropriate massage.
+	 * 
+	 * @return returns true if shop is open
+	 * 
+	 */
+	public boolean isOpen() {
+		boolean flag = (this.openTime.getHour() < (LocalTime.now().getHour())
+				&& this.closeTime.getHour() > (LocalTime.now().getHour()));
+		if (!flag) {
+			System.out.println("Shop is Closed, Visit again between" + this.openTime.getHour() + " and "
+					+ this.closeTime.getHour());
+		}
+		return flag;
+	}
+
+	/**
 	 * Help to buy specific game from warehouse. Also checks for stock before
 	 * placing order and removes the specified game from warehouse stock. and also
 	 * take care of shop opening and closing time before checking the stock.
@@ -55,16 +72,12 @@ public class GameShop2 extends Warehouse2 {
 	 */
 	public boolean buyGame(String game) {
 		boolean flag = false;
-		if (this.openTime.getHour() < (LocalTime.now().getHour())
-				&& this.closeTime.getHour() > (LocalTime.now().getHour())) {
+		if (isOpen()) {
 			if (Warehouse2.checkStock(game) && Warehouse2.removeGame(game)) {
 				System.out.println("Order placed");
 				flag = true;
 			} else
 				System.out.println("Sorry,Try another game this game will be availabe soon");
-		} else {
-			System.out.println("Shop is Closed, Visit again between" + this.openTime.getHour() + " and "
-					+ this.closeTime.getHour());
 		}
 		return flag;
 	}
@@ -76,13 +89,9 @@ public class GameShop2 extends Warehouse2 {
 	 * 
 	 */
 
-	public void displayGameByType(String type) {
-		if (this.openTime.getHour() < (LocalTime.now().getHour())
-				&& this.closeTime.getHour() > (LocalTime.now().getHour())) {
-			Warehouse2.showGameByType(type);
-		} else {
-			System.out.println("Shop is Closed, Visit again between" + this.openTime.getHour() + " and "
-					+ this.closeTime.getHour());
+	public void displayGameByFilter(String type) {
+		if (isOpen()) {
+			Warehouse2.show(Warehouse2.showGameByFilter(type));
 		}
 	}
 
@@ -93,13 +102,9 @@ public class GameShop2 extends Warehouse2 {
 	 * @param min takes float for minimum value
 	 * @param max takes float for maximum value
 	 */
-	public void displayGameByPrice(float min, float max) {
-		if (this.openTime.getHour() < (LocalTime.now().getHour())
-				&& this.closeTime.getHour() > (LocalTime.now().getHour())) {
-			Warehouse2.showGameByPrice(min, max);
-		} else {
-			System.out.println("Shop is Closed, Visit again between" + this.openTime.getHour() + " and "
-					+ this.closeTime.getHour());
+	public void displayGameByFilter(float min, float max) {
+		if (isOpen()) {
+			Warehouse2.show(Warehouse2.showGameByFilter(min, max));
 		}
 	}
 
@@ -112,13 +117,9 @@ public class GameShop2 extends Warehouse2 {
 	 * @param max  takes float for maximum value
 	 */
 
-	public void displayGameByTypeAndPrice(String type, float min, float max) {
-		if (this.openTime.getHour() < (LocalTime.now().getHour())
-				&& this.closeTime.getHour() > (LocalTime.now().getHour())) {
-			Warehouse2.showGameByTypeAndPrice(type, min, max);
-		} else {
-			System.out.println("Shop is Closed, Visit again between" + this.openTime.getHour() + " and "
-					+ this.closeTime.getHour());
+	public void displayGameByFilter(String type, float min, float max) {
+		if (isOpen()) {
+			Warehouse2.show(Warehouse2.showGameByFilter(type, min, max));
 		}
 	}
 
