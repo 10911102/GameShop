@@ -29,9 +29,9 @@ public class Game {
 		this.price = price;
 	}
 
-	public Game(String title, String type, String description, float price) {
+	public Game(String title, Type type, String description, float price) {
 		this.title = title;
-		this.type = type;
+		this.type = type.name();
 		this.description = description;
 		this.price = price;
 	}
