@@ -1,6 +1,7 @@
 package com.resource;
 
 import java.time.LocalTime;
+import java.util.List;
 
 /**
  * Construct Gameshop Object with city, openTime and closeTime.
@@ -89,10 +90,8 @@ public class GameShop2 extends Warehouse2 {
 	 * 
 	 */
 
-	public void displayGameByFilter(String type) {
-		if (isOpen()) {
-			Warehouse2.show(Warehouse2.showGameByFilter(type));
-		}
+	public void displayGameByFilter(Type type) {
+		Warehouse2.show(Warehouse2.showGameByFilter(type.name()));
 	}
 
 	/**
@@ -103,9 +102,7 @@ public class GameShop2 extends Warehouse2 {
 	 * @param max takes float for maximum value
 	 */
 	public void displayGameByFilter(float min, float max) {
-		if (isOpen()) {
-			Warehouse2.show(Warehouse2.showGameByFilter(min, max));
-		}
+		Warehouse2.show(Warehouse2.showGameByFilter(min, max));
 	}
 
 	/**
@@ -115,12 +112,27 @@ public class GameShop2 extends Warehouse2 {
 	 * @param type takes game type as String
 	 * @param min  takes float for minimum value
 	 * @param max  takes float for maximum value
+	 * @return
 	 */
 
-	public void displayGameByFilter(String type, float min, float max) {
-		if (isOpen()) {
-			Warehouse2.show(Warehouse2.showGameByFilter(type, min, max));
-		}
+	/*
+	 * public void displayGameByFilter(Type type, float min, float max) {
+	 * Warehouse2.show(showGameByFilter(type.name(), min, max)); }
+	 */
+
+	public List<Game> displayGameByFilter1(Type type, float min, float max) {
+			return Warehouse2.showGameByFilter(type.name(), min, max);
+	}
+
+	/*
+	 * public void diplayGame(List<Game> list) { Warehouse2.show(list); }
+	 */
+	public void displayGame(List<Game> list) {
+		int count = 1;
+		System.out.println("Game Title        Description                Price");
+		for (Object game : list)
+			System.out.println(count++ + "  " + ((Game) game).getTitle() + "      " + ((Game) game).getDescription()
+					+ "  " + ((Game) game).getPrice());
 	}
 
 }
