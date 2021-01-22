@@ -2,6 +2,7 @@ package com.resource;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -14,14 +15,15 @@ import java.util.List;
  * @version 1.0
  */
 public class DriverCode2 {
+
 	public static void main(String[] args) {
 		List<Game> games = new ArrayList<Game>(); // Using collection ArrayList because insertion operation on list is
 													// faster then other collection
 
-		games.add(new Game("Contra", Type.ACTION, "Contra is a run and gun game", 100.2f));
-		games.add(new Game("PubG", Type.ACTION, "Player Unknown's battleground", 111.5f));
-		games.add(new Game("HitMan", Type.ACTION, "Sniper stimulation game", 120.5f));
-		games.add(new Game("Chess", Type.STRATEGY, "Brain booster game", 10f));
+		games.add(new Game("Contra", GameType.ACT, "Contra is a run and gun game", 100.2f));
+		games.add(new Game("PubG", GameType.ACT, "Player Unknown's battleground", 111.5f));
+		games.add(new Game("HitMan", GameType.ACT, "Sniper stimulation game", 120.5f));
+		games.add(new Game("Chess", GameType.STRATEGY, "Brain booster game", 10f));
 		Warehouse2.setGameList(games);// setting list(Set)
 		// Initializing and test on GameShop objects
 		GameShop2 objPune = new GameShop2("Pune", LocalTime.of(10, 00), LocalTime.of(19, 00));
@@ -31,16 +33,27 @@ public class DriverCode2 {
 		 * System.out.println(LocalTime.now());
 		 */
 		// Filter method on game type
-		objPune.displayGameByFilter(Type.ACTION);
+		Warehouse2.show(Warehouse2.filterGame(GameType.ACT));
 		System.out.println();
-		objMumbai.displayGameByFilter(100, 125);
-		objMumbai.displayGame(objMumbai.displayGameByFilter1(Type.ACTION, 100, 125));
+		Warehouse2.show(Warehouse2.filterGame(100, 125));
+		Warehouse2.show(Warehouse2.filterGame(GameType.ACT, 100, 125));
 
-		System.out.println(Type.ACTION.getDescription());
+		System.out.println(GameType.ACT.getValue());
+
 		// Testing buyGame() with different objects and parameters
+
 		objPune.buyGame("Contra");
 		objMumbai.buyGame("Contra");
 		objMumbai.buyGame("Contra");
+
+		// System.out.println(Calendar.getInstance().get(1)+"/"+Calendar.getInstance().get(0)+"/"+Calendar.getInstance().get(5));
+		System.out.println();
+		Calendar d = Calendar.getInstance();
+		d.set(2021, 10, 10);
+		games.add(new Game("Fau-G", GameType.ACT, "Indian version of PubG", 115.0f, d));
+
+		Warehouse2.show(Warehouse2.filterGame());
+		Warehouse2.show(Warehouse2.showUpComings());
 
 	}
 }

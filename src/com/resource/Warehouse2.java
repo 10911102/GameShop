@@ -1,6 +1,8 @@
 package com.resource;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -76,11 +78,11 @@ public class Warehouse2 {
 	 * 
 	 */
 
-	public static List<Game> showGameByFilter(String type) {
+	public static List<Game> filterGame(GameType type) {
 		List<Game> list = new ArrayList<Game>();
 		System.out.println("Games having Type " + type);
 		for (Game game : gameList) {
-			if (game.getType().equals(type)) {
+			if (game.getGameType().equals(type.getValue())) {
 				list.add(game);
 			}
 		}
@@ -115,7 +117,7 @@ public class Warehouse2 {
 	 *         of Game
 	 * 
 	 */
-	public static List<Game> showGameByFilter(float min, float max) {
+	public static List<Game> filterGame(float min, float max) {
 		List<Game> list = new ArrayList<Game>();
 		System.out.println("Games having price between " + min + " and " + max);
 		for (Game game : gameList) {
@@ -141,11 +143,58 @@ public class Warehouse2 {
 	 * 
 	 */
 
-	public static List<Game> showGameByFilter(String type, float min, float max) {
+	public static List<Game> filterGame(GameType type, float min, float max) {
 		List<Game> list = new ArrayList<Game>();
-		list = showGameByFilter(type);
-		list.retainAll(showGameByFilter(min, max));
+		list = filterGame(type);
+		list.retainAll(filterGame(min, max));
 		return list;
+	}
+	/**
+	 * Returns <a href=
+	 * "https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html">Arraylist</a>
+	 * of games available today in warehouse
+	 * 
+	 * @return list <a href=
+	 *         "https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html">Arraylist</a>
+	 *         of Game
+	 * 
+	 */
+	public static List<Game> filterGame() {
+		List<Game> list = gameList;
+		Collections.sort(list);
+		/*
+		 * Iterator<Game> g= list.iterator(); while(g.hasNext()){
+		 * if(((Game)g).getDate().after(Calendar.getInstance())) {
+		 * //java.lang.ClassCastException: class java.util.ArrayList$Itr cannot be cast
+		 * to class list.remove((Game)g); } g.next(); }
+		 */
+		List<Game> listGame = new ArrayList<Game>();
+		for (Game game : list)
+			if (game.getDate().before(Calendar.getInstance())) {
+				listGame.add(game);
+			}
+		return listGame;
+	}
+
+	/**
+	 * Returns <a href=
+	 * "https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html">Arraylist</a>
+	 * of upcoming games in warehouse
+	 * @return 
+	 * 
+	 * @return list <a href=
+	 *         "https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html">Arraylist</a>
+	 *         of Game
+	 * 
+	 */
+	public static List<Game> showUpComings() {
+		List<Game> listGame = new ArrayList<Game>();
+		for (Game game : gameList)
+			if (game.getDate().after(Calendar.getInstance())) {
+				listGame.add(game);
+			}
+		
+		return listGame;
 	}
 
 }
