@@ -31,6 +31,7 @@ public class Game implements Comparable<Game>{
 		this.price = price;
 	}
 
+
 	public Game(String title, GameType type, String description, float price) {
 		this.title = title;
 		this.type = type;
@@ -38,9 +39,11 @@ public class Game implements Comparable<Game>{
 		this.price = price;
 		this.date=Calendar.getInstance();
 	}
-	public Game(String title, GameType type, String description, float price,Calendar date) {
+
+	public Game(String title, Type type, String description, float price, Calender date) {
+
 		this.title = title;
-		this.type = type;
+		this.type = type.name();
 		this.description = description;
 		this.price = price;
 		this.date=date;

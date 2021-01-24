@@ -20,6 +20,7 @@ public class DriverCode2 {
 		List<Game> games = new ArrayList<Game>(); // Using collection ArrayList because insertion operation on list is
 													// faster then other collection
 
+
 		games.add(new Game("Contra", GameType.ACT, "Contra is a run and gun game", 100.2f));
 		games.add(new Game("PubG", GameType.ACT, "Player Unknown's battleground", 111.5f));
 		games.add(new Game("HitMan", GameType.ACT, "Sniper stimulation game", 120.5f));
@@ -40,6 +41,12 @@ public class DriverCode2 {
 
 		System.out.println(GameType.ACT.getValue());
 
+		objPune.displayGameByFilter(Type.ACTION);
+		System.out.println();
+		objMumbai.displayGameByFilter(100, 125);
+		objMumbai.displayGame(objMumbai.displayGameByFilter1(Type.ACTION, 100, 125));
+
+		System.out.println(Type.ACTION.getDescription());
 		// Testing buyGame() with different objects and parameters
 
 		objPune.buyGame("Contra");

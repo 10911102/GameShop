@@ -1,6 +1,7 @@
 package com.resource;
 
 import java.time.LocalTime;
+import java.util.List;
 
 /**
  * Construct Gameshop Object with city, openTime and closeTime.
@@ -81,4 +82,5 @@ public class GameShop2 extends Warehouse2 {
 		}
 		return flag;
 	}
+
 }
