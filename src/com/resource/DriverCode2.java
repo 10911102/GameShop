@@ -40,13 +40,6 @@ public class DriverCode2 {
 		Warehouse2.show(Warehouse2.filterGame(GameType.ACT, 100, 125));
 
 		System.out.println(GameType.ACT.getValue());
-
-		objPune.displayGameByFilter(Type.ACTION);
-		System.out.println();
-		objMumbai.displayGameByFilter(100, 125);
-		objMumbai.displayGame(objMumbai.displayGameByFilter1(Type.ACTION, 100, 125));
-
-		System.out.println(Type.ACTION.getDescription());
 		// Testing buyGame() with different objects and parameters
 
 		objPune.buyGame("Contra");

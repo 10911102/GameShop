@@ -40,10 +40,10 @@ public class Game implements Comparable<Game>{
 		this.date=Calendar.getInstance();
 	}
 
-	public Game(String title, Type type, String description, float price, Calender date) {
+	public Game(String title, GameType type, String description, float price, Calendar date) {
 
 		this.title = title;
-		this.type = type.name();
+		this.type = type;
 		this.description = description;
 		this.price = price;
 		this.date=date;
